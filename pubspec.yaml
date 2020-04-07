@@ -32,6 +32,10 @@ dependencies:
   url_launcher: ^5.1.0
   bot_toast: ^2.2.1
   flutter_screenutil: ^1.0.1
+  get_it: ^3.0.1
+  curved_navigation_bar: ^0.3.1
+  # 图片缓存 https://github.com/renefloor/flutter_cached_network_image
+  cached_network_image: ^2.0.0-rc
 
 dev_dependencies:
   flutter_test:
