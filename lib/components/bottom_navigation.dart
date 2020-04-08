@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fun_flutter_music/network/request_manager.dart';
 import 'package:fun_flutter_music/pages/account/account_page.dart';
 import 'package:fun_flutter_music/pages/chat/chat_page.dart';
 import 'package:fun_flutter_music/pages/discover/discover_page.dart';
@@ -16,6 +17,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   int _currentIndex = 0;
   final List<Widget> _children = [DiscoverPage(), VideoPage(), MinePage(), ChatPage(), AccountPage()];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    var opt = RequestManager.getInstance().options;
+    RequestManager.getInstance().options = opt;
+  }
 
   @override
   Widget build(BuildContext context) {

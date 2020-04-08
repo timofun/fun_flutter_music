@@ -36,6 +36,8 @@ dependencies:
   curved_navigation_bar: ^0.3.1
   # 图片缓存 https://github.com/renefloor/flutter_cached_network_image
   cached_network_image: ^2.0.0-rc
+  # 轮播
+  flutter_swiper : ^1.1.6
 
 dev_dependencies:
   flutter_test:
