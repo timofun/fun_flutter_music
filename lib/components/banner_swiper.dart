@@ -32,6 +32,9 @@ class _BannerState extends State<BannerSwiper> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        decoration: new BoxDecoration(
+          color: ColorBackground,
+        ),
         height: 130,
         child: Swiper(
             itemBuilder: (BuildContext context, int index) {

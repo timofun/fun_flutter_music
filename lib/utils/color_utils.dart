@@ -4,6 +4,7 @@ import 'dart:ui';
 const ColorPrimary = Color(0xff751E15);
 const ColorDefault = Color(0xFF535353);
 const ColorBottomIconSelected = Color(0xFFF6958D);
+const ColorBackground = Color(0xFFF0A0A0A);
 const Color666 = Color(0xFF666666);
 const ColorEEE = Color(0xFFeeeeee);
 const Color999 = Color(0xFF999999);

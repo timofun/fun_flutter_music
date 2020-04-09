@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fun_flutter_music/components/banner_swiper.dart';
+import 'package:fun_flutter_music/components/dragon_ball_navigation.dart';
 
 class DiscoverPage extends StatefulWidget {
   @override
@@ -9,8 +10,11 @@ class DiscoverPage extends StatefulWidget {
 class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BannerSwiper(),
+    return ListView(
+      children: [
+        BannerSwiper(),
+        DragonBallNavigation()
+      ],
     );
   }
 }
