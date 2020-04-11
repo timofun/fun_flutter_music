@@ -3,7 +3,7 @@
 /// * @time: 2020/4/9 0009
 import 'package:flutter/material.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
-import 'package:fun_flutter_music/widgets/load_image.dart';
+import 'file:///E:/Project/fun_flutter_music/lib/components/load_image.dart';
 
 class DragonBall extends StatelessWidget {
   final String image;

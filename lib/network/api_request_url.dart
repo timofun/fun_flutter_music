@@ -4,10 +4,10 @@
 const String LOGIN = "app/ucenter/login";
 
 ///banner
-const String BANNER = "/banner";
+const String BANNER = "banner";
 
-///权限
-const String POWER = "app/power";
+///推荐歌单 可选参数 : limit: 取出数量 , 默认为 30 (不支持 offset)
+const String PERSONAL = "personalized";
 
 ///App获取基础模板分段数据(公共)
 const String GET_BASE_TPL_GROUP_ATTR = "tpl/getBaseTplGroupAttr";

@@ -1,5 +1,4 @@
-import 'package:fun_flutter_music/pages/discover/model/banners.dart';
-
+import 'banners.dart';
 class BannerModel {
 
   List<Banners> banners;

@@ -6,7 +6,7 @@ import 'package:fun_flutter_music/pages/discover/discover_page.dart';
 import 'package:fun_flutter_music/pages/mine/mine_page.dart';
 import 'package:fun_flutter_music/pages/video/video_page.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
-import 'package:fun_flutter_music/widgets/load_image.dart';
+import 'file:///E:/Project/fun_flutter_music/lib/components/load_image.dart';
 
 class BottomNavigation extends StatefulWidget {
   @override

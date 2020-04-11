@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:fun_flutter_music/network/api_request_url.dart';
 import 'package:fun_flutter_music/network/request_manager.dart';
-import 'package:fun_flutter_music/pages/discover/model/Banner_model.dart';
-import 'package:fun_flutter_music/pages/discover/model/banners.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
+
+import 'model/Banner_model.dart';
+import 'model/banners.dart';
 
 class BannerSwiper extends StatefulWidget {
   @override

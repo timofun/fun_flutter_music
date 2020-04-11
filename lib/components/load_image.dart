@@ -32,7 +32,7 @@ class LoadImage extends StatelessWidget {
         fit: fit,
         format: format
       );
-    }else {
+    } else {
       if (image.startsWith("http")){
         return CachedNetworkImage(
           imageUrl: image,
