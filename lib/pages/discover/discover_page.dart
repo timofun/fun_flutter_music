@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fun_flutter_music/components/search_bar.dart';
 import 'package:fun_flutter_music/network/api_request_url.dart';
 import 'package:fun_flutter_music/network/request_manager.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
@@ -9,12 +11,16 @@ import 'package:fun_flutter_music/widgets/play_list_item/model/play_list_item_mo
 import 'package:fun_flutter_music/widgets/play_list_item/model/play_list_model.dart';
 import 'package:fun_flutter_music/widgets/play_list_item/play_list_item.dart';
 
+const APPBAR_SCROLL_OFFSET = 100;
+const SEARCH_BAR_DEFAULT_TEXT = '飘向北方 现在很火哦';
+
 class DiscoverPage extends StatefulWidget {
   @override
   _DiscoverPageState createState() => _DiscoverPageState();
 }
 
 class _DiscoverPageState extends State<DiscoverPage> {
+
   List<PlayListItemModel> playList = [];
 
   @override
@@ -36,85 +42,178 @@ class _DiscoverPageState extends State<DiscoverPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: ColorBackground
+    return Scaffold(
+      appBar: AppBar(
+        titleSpacing: 0.0,
+        backgroundColor: ColorBackground,
+        title: Container(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: SearchBar(
+            searchBarType: SearchBarType.home,
+            inputBoxClick: () {},
+            speakClick: () {},
+            defaultText: SEARCH_BAR_DEFAULT_TEXT,
+            leftButtonClick: () {},
+          ),
+        ),
       ),
-      child: ListView(
-        physics: BouncingScrollPhysics(),
-        children: [
-          BannerSwiper(),
-          DragonBallNavigation(),
-          Container(
-            height: 200.0,
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "推荐歌单",
-                        style: TextStyle(
-                            color: ColorDefault,
-                          fontSize: 12
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Container(
+        decoration: BoxDecoration(
+            color: ColorBackground
+        ),
+        child: ListView(
+          physics: BouncingScrollPhysics(),
+          children: [
+            BannerSwiper(),
+            DragonBallNavigation(),
+            Container(
+              padding: EdgeInsets.only(bottom: 20),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "为你精挑细选",
+                            "推荐歌单",
                             style: TextStyle(
-                                color: Colors.white,
-                              fontSize: 16
+                                color: ColorDefault,
+                                fontSize: 12
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(right: 10),
-                            width: 60,
-                            height: 20,
-                            child: OutlineButton(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                              textColor: ColorDefault,
-                              borderSide: BorderSide(
-                                  color: ColorDefault,
-                                  width: 1.0,
-                                  style: BorderStyle.solid
-                              ),
-                              splashColor: Colors.grey,
-                              child: Text(
-                                "查看更多",
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "为你精挑细选",
                                 style: TextStyle(
-                                    fontSize: 11
+                                    color: Colors.white,
+                                    fontSize: 16
                                 ),
                               ),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                              onPressed: () {},
-                            ),
+                              Container(
+                                margin: EdgeInsets.only(right: 10),
+                                width: 60,
+                                height: 20,
+                                child: OutlineButton(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  textColor: ColorDefault,
+                                  borderSide: BorderSide(
+                                      color: ColorDefault,
+                                      width: 1.0,
+                                      style: BorderStyle.solid
+                                  ),
+                                  splashColor: Colors.grey,
+                                  child: Text(
+                                    "查看更多",
+                                    style: TextStyle(
+                                        fontSize: 11
+                                    ),
+                                  ),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                                  onPressed: () {},
+                                ),
+                              )
+                            ],
                           )
                         ],
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 10),
-                  height: 160,
-                  child: new ListView(
-                      physics: BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                    children: playList.map<Widget>((p) => PlayListItem(p)).toList()
-                  )
+                      ),
+                    ),
+                    Container(
+                        padding: EdgeInsets.only(left: 5, top: 10),
+                        height: ScreenUtil().setWidth(300),
+                        child: new ListView(
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            children: playList.map<Widget>((p) => Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 5),
+                              child: PlayListItem(p),
+                            )).toList()
+                        )
+                    )
+                  ],
                 )
-              ],
-            )
-          )
-        ],
+            ),
+            Container(
+                padding: EdgeInsets.only(bottom: 20),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "推荐歌单",
+                            style: TextStyle(
+                                color: ColorDefault,
+                                fontSize: 12
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "为你精挑细选",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: 10),
+                                width: 60,
+                                height: 20,
+                                child: OutlineButton(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  textColor: ColorDefault,
+                                  borderSide: BorderSide(
+                                      color: ColorDefault,
+                                      width: 1.0,
+                                      style: BorderStyle.solid
+                                  ),
+                                  splashColor: Colors.grey,
+                                  child: Text(
+                                    "查看更多",
+                                    style: TextStyle(
+                                        fontSize: 11
+                                    ),
+                                  ),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                                  onPressed: () {},
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                        padding: EdgeInsets.only(left: 5, top: 10),
+                        height: ScreenUtil().setWidth(300),
+                        child: new ListView(
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            children: playList.map<Widget>((p) => Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 5),
+                              child: PlayListItem(p),
+                            )).toList()
+                        )
+                    )
+                  ],
+                )
+            ),
+          ],
+        ),
       ),
     );
   }

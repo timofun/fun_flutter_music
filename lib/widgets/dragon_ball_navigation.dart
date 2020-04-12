@@ -2,31 +2,40 @@
 /// * @author: fun
 /// * @time: 2020/4/9 0009
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
 import 'file:///E:/Project/fun_flutter_music/lib/components/dragon_ball.dart';
 
 class DragonBallNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: new BoxDecoration(
-        color: ColorBackground,
+    var map = {
+      '每日推荐': 'icon/t_dragonball_icn_daily',
+      '歌单': 'icon/t_dragonball_icn_playlist',
+      '排行榜': 'icon/t_dragonball_icn_radio_rank',
+      '电台': 'icon/t_dragonball_icn_fm',
+      '直播': 'icon/t_dragonball_icn_look',
+    };
+
+    var keys = map.keys.toList();
+    return GridView.custom(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.only(top: 10, bottom: 10),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: keys.length,
+        childAspectRatio: 1 / 1.1,
       ),
-      padding: EdgeInsets.symmetric(vertical: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          DragonBall("icon/t_dragonball_icn_daily", "每日推荐", () {
-          }),
-          DragonBall("icon/t_dragonball_icn_playlist", "歌单", () {
-          }),
-          DragonBall("icon/t_dragonball_icn_radio_rank", "排行榜", () {
-          }),
-          DragonBall("icon/t_dragonball_icn_fm", "电台", () {
-          }),
-          DragonBall("icon/t_dragonball_icn_look", "直播", () {
-          }),
-        ],
+      childrenDelegate: SliverChildBuilderDelegate(
+            (context, index) {
+          return GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTap: () {
+            },
+            child: DragonBall(map[keys[index]], keys[index])
+          );
+        },
+        childCount: keys.length,
       ),
     );
   }

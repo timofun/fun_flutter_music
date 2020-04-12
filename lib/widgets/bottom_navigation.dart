@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fun_flutter_music/network/request_manager.dart';
 import 'package:fun_flutter_music/pages/account/account_page.dart';
 import 'package:fun_flutter_music/pages/chat/chat_page.dart';
 import 'package:fun_flutter_music/pages/discover/discover_page.dart';
 import 'package:fun_flutter_music/pages/mine/mine_page.dart';
 import 'package:fun_flutter_music/pages/video/video_page.dart';
+import 'package:fun_flutter_music/utils/application.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
 import 'file:///E:/Project/fun_flutter_music/lib/components/load_image.dart';
 
@@ -28,10 +30,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
+    final size = MediaQuery.of(context).size;
+    Application.screenWidth = size.width;
+    Application.screenHeight = size.height;
+    Application.statusBarHeight = MediaQuery.of(context).padding.top;
+    Application.bottomBarHeight = MediaQuery.of(context).padding.bottom;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('网易云音乐'),
-      ),
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: ColorBottomIconSelected,
         selectedItemColor: Colors.white,

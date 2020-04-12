@@ -4,6 +4,7 @@
 /// @date 2020/4/11 0011 22:38
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
 
 import 'model/play_list_item_model.dart';
@@ -36,17 +37,16 @@ class PlayListItem extends StatelessWidget {
       },
       onLongPress: onLongPress,
       child: Container(
-        width: 110,
-        padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+        width: ScreenUtil().setWidth(200),
         child: Column(
           children: <Widget>[
             ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(6)),
               child: Container(
-                width: 110,
-                height: 110,
+                width: ScreenUtil().setWidth(200),
+                height: ScreenUtil().setWidth(200),
                 child: FadeInImage.assetNetwork(
-                  placeholder: "assets/icon/aao.png",
+                  placeholder: "images/icon/aao.png",
                   image: playItem.picUrl,
                   fit: BoxFit.cover,
                 ),

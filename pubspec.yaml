@@ -31,13 +31,16 @@ dependencies:
   fluro: ^1.5.1
   url_launcher: ^5.1.0
   bot_toast: ^2.2.1
-  flutter_screenutil: ^1.0.1
   get_it: ^3.0.1
   curved_navigation_bar: ^0.3.1
   # 图片缓存 https://github.com/renefloor/flutter_cached_network_image
   cached_network_image: ^2.0.0-rc
   # 轮播
   flutter_swiper : ^1.1.6
+  # UI自适应屏幕
+  flutter_screenutil: ^1.1.0
+  # 工具包
+  common_utils: ^1.1.3
 
 dev_dependencies:
   flutter_test:

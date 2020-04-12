@@ -3,7 +3,7 @@
  */
 import 'package:flutter/cupertino.dart';
 import 'package:fun_flutter_music/routers/router.dart';
-import 'application.dart';
+import '../utils/application.dart';
 
 // 路由跳转
 class NavigatorUtil {
