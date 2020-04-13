@@ -14,6 +14,7 @@ class BannerSwiper extends StatefulWidget {
 
 class _BannerState extends State<BannerSwiper> {
   List<Banners> _banners = [];
+
   @override
   void initState() {
     // TODO: implement initState
@@ -31,29 +32,25 @@ class _BannerState extends State<BannerSwiper> {
 
   @override
   Widget build(BuildContext context) {
-    var height = ScreenUtil().setHeight(374 / 1011 * (1011 - 20));
-    print(height);
-    return Container(
-        height: height,
-        decoration: new BoxDecoration(
-          color: ColorBackground,
-        ),
-        padding: EdgeInsets.only(bottom: 20, left: 10, right: 10),
-        child: Swiper(
-            itemBuilder: (BuildContext context, int index) {
-              return ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(10))),
-                child: FadeInImage.assetNetwork(
-                  placeholder: "http://www.xyfdcw.com.cn/userfiles/image/20200225/250949238ea3e3a7ec8112.jpg",
-                  image: _banners[index].pic,
-                  fit: BoxFit.cover,
-                )
-              );
-            },
-            autoplay: true,
-            itemCount: _banners.length > 0 ? _banners.length : 3,
-            pagination: new SwiperPagination(
-                builder: DotSwiperPaginationBuilder(
-                    color: ColorDefault, size: 6.0, activeSize: 8.0))));
+    return AspectRatio(
+        aspectRatio: (1011 - (ScreenUtil().setWidth(15) * 2)) / 375,
+        child: Container(
+            decoration: new BoxDecoration(
+              color: ColorBackground,
+            ),
+            padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+            child: Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  return ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(15))),
+                      child: _banners.length > 0 ? Image.network(_banners[index].pic, fit: BoxFit.fill,)
+                          : Image.asset('images/banner_default.png', fit: BoxFit.fill,)
+                  );
+                },
+                autoplay: true,
+                itemCount: _banners.length > 0 ? _banners.length : 3,
+                pagination: new SwiperPagination(
+                    builder: DotSwiperPaginationBuilder(
+                        color: ColorDefault, size: 6.0, activeSize: 8.0)))));
   }
 }

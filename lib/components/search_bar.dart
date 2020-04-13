@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fun_flutter_music/components/load_image.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
-
+import 'package:fun_flutter_music/components/empty_widget.dart';
 enum SearchBarType { home, normal, homeLight }
 
 class SearchBar extends StatefulWidget {
@@ -59,14 +59,12 @@ class _SearchBarState extends State<SearchBar> {
   _genNormalSearch() {
     return Container(
       child: Row(children: <Widget>[
-        _wrapTap(
+        widget?.hideLeft ?? false ? EmptyWidget() : _wrapTap(
             Container(
               padding: EdgeInsets.fromLTRB(6, 5, 10, 5),
-              child: widget?.hideLeft ?? false
-                  ? null
-                  : Icon(
+              child: Icon(
                 Icons.arrow_back_ios,
-                color: Colors.grey,
+                color: ColorDefault,
                 size: 26,
               ),
             ),
@@ -79,8 +77,8 @@ class _SearchBarState extends State<SearchBar> {
             Container(
               padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
               child: Text(
-                '搜索',
-                style: TextStyle(color: Colors.blue, fontSize: 17),
+                '取消',
+                style: TextStyle(color: ColorDefault, fontSize: 17),
               ),
             ),
             widget.rightButtonClick)
@@ -110,46 +108,42 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   _inputBox() {
-    Color inputBoxColor;
-    if (widget.searchBarType == SearchBarType.home) {
-      inputBoxColor = Colors.white10;
-    } else {
-      inputBoxColor = Color(int.parse('0xffEDEDED'));
-    }
+    Color inputBoxColor = Colors.white10;
     return Container(
       height: 30,
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       decoration: BoxDecoration(
           color: inputBoxColor,
-          borderRadius: BorderRadius.circular(
-              widget.searchBarType == SearchBarType.normal ? 5 : 15)),
+          borderRadius: BorderRadius.circular(15)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Icon(
             Icons.search,
             size: 20,
-            color: widget.searchBarType == SearchBarType.normal
-                ? Color(0xffA9A9A9)
-                : Colors.white70,
+            color: Colors.white70,
           ),
           Container(
               child: widget.searchBarType == SearchBarType.normal
-                  ? TextField(
+                  ? Expanded(
+                  child: TextField(
+                  cursorColor: ColorDefault,
                   controller: _controller,
                   onChanged: _onChanged,
                   autofocus: true,
                   style: TextStyle(
                       fontSize: 18.0,
-                      color: Colors.black,
+                      color: ColorDefault,
                   ),
                   //输入文本的样式
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                     border: InputBorder.none,
                     hintText: widget.hint ?? '',
-                    hintStyle: TextStyle(fontSize: 15),
-                  ))
+                    hintStyle: TextStyle(
+                      fontSize: 15,
+                      color: ColorDefault,
+                    ),
+                  )))
                   : _wrapTap(
                   Container(
                     child: Text(
@@ -164,9 +158,7 @@ class _SearchBarState extends State<SearchBar> {
               Icon(
                 Icons.mic,
                 size: 22,
-                color: widget.searchBarType == SearchBarType.normal
-                    ? Colors.blue
-                    : Colors.grey,
+                color: Colors.grey,
               ),
               widget.speakClick)
               : _wrapTap(
@@ -179,7 +171,7 @@ class _SearchBarState extends State<SearchBar> {
               _controller.clear();
             });
             _onChanged('');
-          })) : SizedBox(width: 0)
+          })) : EmptyWidget()
         ],
       ),
     );

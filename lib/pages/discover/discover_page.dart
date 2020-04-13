@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fun_flutter_music/components/search_bar.dart';
 import 'package:fun_flutter_music/network/api_request_url.dart';
 import 'package:fun_flutter_music/network/request_manager.dart';
+import 'package:fun_flutter_music/routers/navigator_util.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
 import 'package:fun_flutter_music/widgets/banner/banner_swiper.dart';
 import 'package:fun_flutter_music/widgets/dragon_ball_navigation.dart';
@@ -15,6 +16,8 @@ const APPBAR_SCROLL_OFFSET = 100;
 const SEARCH_BAR_DEFAULT_TEXT = '飘向北方 现在很火哦';
 
 class DiscoverPage extends StatefulWidget {
+  BuildContext currentContext;
+  DiscoverPage(this.currentContext);
   @override
   _DiscoverPageState createState() => _DiscoverPageState();
 }
@@ -50,7 +53,9 @@ class _DiscoverPageState extends State<DiscoverPage> {
           padding: EdgeInsets.only(left: 20, right: 20),
           child: SearchBar(
             searchBarType: SearchBarType.home,
-            inputBoxClick: () {},
+            inputBoxClick: () {
+              NavigatorUtil.goSearchNormalPage(widget.currentContext);
+            },
             speakClick: () {},
             defaultText: SEARCH_BAR_DEFAULT_TEXT,
             leftButtonClick: () {},

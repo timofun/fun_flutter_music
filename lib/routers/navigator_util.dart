@@ -12,4 +12,13 @@ class NavigatorUtil {
   static void goLoginPage(BuildContext context){
     Application.router.navigateTo(context, Routers.loginPage);
   }
+
+  // 跳转到用户中心
+  static void goSearchNormalPage(BuildContext context){
+    Application.router.navigateTo(context, Routers.searchNormalPage);
+  }
+
+  static void pop(context) {
+    Navigator.of(context).pop();
+  }
 }

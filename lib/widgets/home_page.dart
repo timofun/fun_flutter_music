@@ -1,3 +1,4 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fun_flutter_music/network/request_manager.dart';
@@ -6,19 +7,20 @@ import 'package:fun_flutter_music/pages/chat/chat_page.dart';
 import 'package:fun_flutter_music/pages/discover/discover_page.dart';
 import 'package:fun_flutter_music/pages/mine/mine_page.dart';
 import 'package:fun_flutter_music/pages/video/video_page.dart';
+import 'package:fun_flutter_music/routers/router.dart';
 import 'package:fun_flutter_music/utils/application.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
 import 'file:///E:/Project/fun_flutter_music/lib/components/load_image.dart';
 
-class BottomNavigation extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _BottomNavigationState createState() => _BottomNavigationState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _HomePageState extends State<HomePage> {
 
   int _currentIndex = 0;
-  final List<Widget> _children = [DiscoverPage(), VideoPage(), MinePage(), ChatPage(), AccountPage()];
+//  final List<Widget> _children = [DiscoverPage(), VideoPage(), MinePage(), ChatPage(), AccountPage()];
 
   @override
   void initState() {
@@ -30,12 +32,18 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _children = [DiscoverPage(context), VideoPage(), MinePage(), ChatPage(), AccountPage()];
+    /// 初始化fluro
+    final router = Router();
+    Routers.configureRoutes(router);
+    Application.router = router;
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
     final size = MediaQuery.of(context).size;
     Application.screenWidth = size.width;
     Application.screenHeight = size.height;
     Application.statusBarHeight = MediaQuery.of(context).padding.top;
     Application.bottomBarHeight = MediaQuery.of(context).padding.bottom;
+    print({"bottomBarHeight": Application.bottomBarHeight, "statusBarHeight": Application.statusBarHeight});
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: ColorBottomIconSelected,

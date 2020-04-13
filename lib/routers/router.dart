@@ -10,6 +10,7 @@ class Routers{
 
   static String root='/';
   static String loginPage = '/LoginPage';
+  static String searchNormalPage = '/SearchNormalPage';
 
 
   static void configureRoutes(Router router) {
@@ -19,5 +20,6 @@ class Routers{
         }
     );
     router.define(loginPage, handler: userHandler);
+    router.define(searchNormalPage, handler: searchNormalHandler);
   }
 }
