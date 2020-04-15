@@ -25,29 +25,13 @@ class _HomePageState extends State<HomePage>{
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    var opt = RequestManager.getInstance().options;
-    RequestManager.getInstance().options = opt;
-    Provider.of<SearchProvider>(context, listen: false).getSearchDefault();
   }
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> _children = [DiscoverPage(context), VideoPage(), MinePage(), ChatPage(), AccountPage()];
-    /// 初始化fluro
-    final router = Router();
-    Routers.configureRoutes(router);
-    Application.router = router;
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
-    final size = MediaQuery.of(context).size;
-    Application.screenWidth = size.width;
-    Application.screenHeight = size.height;
-    Application.statusBarHeight = MediaQuery.of(context).padding.top;
-    Application.bottomBarHeight = MediaQuery.of(context).padding.bottom;
-    /// 实例化本地存储库
-    Application.initSp();
-    print({"bottomBarHeight": Application.bottomBarHeight, "statusBarHeight": Application.statusBarHeight});
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: ColorBottomIconSelected,
@@ -86,7 +70,11 @@ class _HomePageState extends State<HomePage>{
         ],
         backgroundColor: ColorPrimary
       ),
-      body: _children[_currentIndex],
+      /// indexedStack可以让AutomaticKeepAliveClientMixin生效
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _children,
+      ),
     );
   }
 

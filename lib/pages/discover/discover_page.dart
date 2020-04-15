@@ -15,8 +15,10 @@ import 'package:fun_flutter_music/widgets/play_list_item/play_list_item.dart';
 const APPBAR_SCROLL_OFFSET = 100;
 
 class DiscoverPage extends StatefulWidget{
+
   BuildContext currentContext;
   DiscoverPage(this.currentContext);
+
   @override
   _DiscoverPageState createState() => _DiscoverPageState();
 }
@@ -24,6 +26,9 @@ class DiscoverPage extends StatefulWidget{
 class _DiscoverPageState extends State<DiscoverPage> with AutomaticKeepAliveClientMixin {
 
   List<PlayListItemModel> playList = [];
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -43,8 +48,10 @@ class _DiscoverPageState extends State<DiscoverPage> with AutomaticKeepAliveClie
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         titleSpacing: 0.0,
         backgroundColor: ColorBackground,
         title: Container(
@@ -219,7 +226,4 @@ class _DiscoverPageState extends State<DiscoverPage> with AutomaticKeepAliveClie
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

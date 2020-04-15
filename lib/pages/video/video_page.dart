@@ -6,13 +6,15 @@ class VideoPage extends StatefulWidget {
 }
 
 class _VideoPageState extends State<VideoPage> with AutomaticKeepAliveClientMixin {
+
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       child: Text('video'),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

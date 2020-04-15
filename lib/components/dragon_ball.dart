@@ -1,7 +1,7 @@
-import 'package:common_utils/common_utils.dart';
-/// * @description:
+/// * @description: discover导航菜单小组件
 /// * @author: fun
 /// * @time: 2020/4/9 0009
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fun_flutter_music/components/empty_widget.dart';
