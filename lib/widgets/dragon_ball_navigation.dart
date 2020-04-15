@@ -2,9 +2,7 @@
 /// * @author: fun
 /// * @time: 2020/4/9 0009
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fun_flutter_music/utils/color_utils.dart';
-import 'file:///E:/Project/fun_flutter_music/lib/components/dragon_ball.dart';
+import 'package:fun_flutter_music/components/dragon_ball.dart';
 
 class DragonBallNavigation extends StatelessWidget {
   @override

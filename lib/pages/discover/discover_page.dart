@@ -13,22 +13,20 @@ import 'package:fun_flutter_music/widgets/play_list_item/model/play_list_model.d
 import 'package:fun_flutter_music/widgets/play_list_item/play_list_item.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
-const SEARCH_BAR_DEFAULT_TEXT = '飘向北方 现在很火哦';
 
-class DiscoverPage extends StatefulWidget {
+class DiscoverPage extends StatefulWidget{
   BuildContext currentContext;
   DiscoverPage(this.currentContext);
   @override
   _DiscoverPageState createState() => _DiscoverPageState();
 }
 
-class _DiscoverPageState extends State<DiscoverPage> {
+class _DiscoverPageState extends State<DiscoverPage> with AutomaticKeepAliveClientMixin {
 
   List<PlayListItemModel> playList = [];
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _getPersonal();
   }
@@ -57,7 +55,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
               NavigatorUtil.goSearchNormalPage(widget.currentContext);
             },
             speakClick: () {},
-            defaultText: SEARCH_BAR_DEFAULT_TEXT,
             leftButtonClick: () {},
           ),
         ),
@@ -222,4 +219,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

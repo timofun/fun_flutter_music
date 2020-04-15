@@ -5,8 +5,8 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fun_flutter_music/components/empty_widget.dart';
+import 'package:fun_flutter_music/components/load_image.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
-import 'file:///E:/Project/fun_flutter_music/lib/components/load_image.dart';
 
 class DragonBall extends StatelessWidget {
   final String image;
