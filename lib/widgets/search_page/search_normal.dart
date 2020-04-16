@@ -11,21 +11,24 @@ import 'package:fun_flutter_music/utils/application.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
 import 'package:fun_flutter_music/utils/text_style_utils.dart';
 
-class SearchNormal extends StatefulWidget {
+class SearchNormalPage extends StatefulWidget {
   @override
   _SearchNormalState createState() => _SearchNormalState();
 }
 
-class _SearchNormalState extends State<SearchNormal> {
+class _SearchNormalState extends State<SearchNormalPage> {
+  /// 历史搜索记录
   List<String> historySearchList;
-  String searchText;
-  bool _isSearching = false; // 是否正在搜索，改变布局
   @override
   void initState() {
     super.initState();
     historySearchList = Application.sp.getStringList("search_history") ?? [];
-//    setState(() {
-//    });
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    historySearchList = Application.sp.getStringList("search_history") ?? [];
   }
 
   @override
@@ -46,7 +49,8 @@ class _SearchNormalState extends State<SearchNormal> {
               NavigatorUtil.pop(context);
             },
             onSubmitted: (text) {
-              _search(text);
+              print({"text": text});
+              _search(context, text);
             },
           ),
         ),
@@ -56,13 +60,13 @@ class _SearchNormalState extends State<SearchNormal> {
           padding:
               EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(40)),
           children: <Widget>[
-            _buildHistorySearch(),
+            _buildHistorySearch(context),
           ]),
     );
   }
 
   // 历史搜索
-  Widget _buildHistorySearch() {
+  Widget _buildHistorySearch(context) {
     return Offstage(
       offstage: historySearchList.isEmpty,
       child: Column(
@@ -119,12 +123,10 @@ class _SearchNormalState extends State<SearchNormal> {
             children: historySearchList
                 .map((v) => GestureDetector(
                       onTap: () {
-                        searchText = v;
-                        _search(v);
+                        _search(context, v);
                       },
                       child: Chip(
                         padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-//                        labelPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                         label: Text(
                           v,
                           style: common13TextStyle,
@@ -140,16 +142,15 @@ class _SearchNormalState extends State<SearchNormal> {
   }
 
   // 搜索
-  void _search(text) {
+  void _search(context, text) {
     setState(() {
       if (historySearchList.contains(text)) historySearchList.remove(text);
       historySearchList.insert(0, text);
       if (historySearchList.length > 5) {
         historySearchList.removeAt(historySearchList.length - 1);
       }
-      _isSearching = true;
-//      _searchController.text = searchText;
     });
     Application.sp.setStringList("search_history", historySearchList);
+    NavigatorUtil.goSearchResultPage(context, text);
   }
 }

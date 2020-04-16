@@ -5,6 +5,7 @@ import 'package:fun_flutter_music/utils/color_utils.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   @override
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
         child: Consumer<SearchProvider>(builder: (context, model, _) {
           return MaterialApp(
             title: 'fun-music',
+            navigatorKey: navigatorKey,
             home: SplashPage(),
             theme: ThemeData(primaryColor: ColorPrimary),
           );

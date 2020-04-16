@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:fun_flutter_music/pages/login/login_page.dart';
 import 'package:fun_flutter_music/widgets/home_page.dart';
 import 'package:fun_flutter_music/widgets/search_page/search_normal.dart';
+import 'package:fun_flutter_music/widgets/search_page/search_result.dart';
 
 // 登录
 Handler userHandler = Handler(
@@ -20,7 +21,14 @@ Handler homeHandler = Handler(
 });
 
 // 正常搜索页
-Handler searchNormalHandler = Handler(
+Handler searchNormalPageHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  return SearchNormal();
+  return SearchNormalPage();
+});
+
+// 搜索页结果页
+Handler searchResultPageHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  String keyword = params["keyword"].first;
+  return SearchResultPage(keyword);
 });
