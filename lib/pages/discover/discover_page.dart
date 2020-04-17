@@ -16,9 +16,6 @@ const APPBAR_SCROLL_OFFSET = 100;
 
 class DiscoverPage extends StatefulWidget{
 
-  BuildContext currentContext;
-  DiscoverPage(this.currentContext);
-
   @override
   _DiscoverPageState createState() => _DiscoverPageState();
 }
@@ -59,7 +56,7 @@ class _DiscoverPageState extends State<DiscoverPage> with AutomaticKeepAliveClie
           child: SearchBar(
             searchBarType: SearchBarType.home,
             inputBoxClick: () {
-              NavigatorUtil.goSearchNormalPage(widget.currentContext);
+              NavigatorUtil.goSearchNormalPage(context);
             },
             speakClick: () {},
             leftButtonClick: () {},

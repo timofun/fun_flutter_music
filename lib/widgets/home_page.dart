@@ -1,18 +1,11 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fun_flutter_music/components/load_image.dart';
-import 'package:fun_flutter_music/network/request_manager.dart';
 import 'package:fun_flutter_music/pages/account/account_page.dart';
 import 'package:fun_flutter_music/pages/chat/chat_page.dart';
 import 'package:fun_flutter_music/pages/discover/discover_page.dart';
 import 'package:fun_flutter_music/pages/mine/mine_page.dart';
 import 'package:fun_flutter_music/pages/video/video_page.dart';
-import 'package:fun_flutter_music/provider/search_provider.dart';
-import 'package:fun_flutter_music/routers/router.dart';
-import 'package:fun_flutter_music/utils/application.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,7 +23,7 @@ class _HomePageState extends State<HomePage>{
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _children = [DiscoverPage(context), VideoPage(), MinePage(), ChatPage(), AccountPage()];
+    final List<Widget> _children = [DiscoverPage(), VideoPage(), MinePage(), ChatPage(), AccountPage()];
 
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(

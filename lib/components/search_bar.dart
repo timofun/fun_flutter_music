@@ -10,6 +10,8 @@ enum SearchBarType { home, normal, homeLight }
 class SearchBar extends StatefulWidget {
   final bool enabled;
   final bool hideLeft;
+  final bool hideRight;
+  final String keyword;
   final SearchBarType searchBarType;
   final void Function() leftButtonClick;
   final void Function() rightButtonClick;
@@ -20,7 +22,9 @@ class SearchBar extends StatefulWidget {
   const SearchBar(
       {Key key,
         this.enabled = true,
+        this.keyword,
         this.hideLeft,
+        this.hideRight,
         this.searchBarType = SearchBarType.normal,
         this.leftButtonClick,
         this.rightButtonClick,
@@ -41,9 +45,9 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   void initState() {
-    if (Provider.of<SearchProvider>(context, listen: false).showKeyword != null) {
+    if (widget.keyword != "") {
       setState(() {
-        _controller.text = Provider.of<SearchProvider>(context, listen: false).showKeyword;
+        _controller.text = widget.keyword;
       });
     }
     super.initState();
@@ -74,7 +78,7 @@ class _SearchBarState extends State<SearchBar> {
           flex: 1,
           child: _inputBox(),
         ),
-        _wrapTap(
+        widget?.hideRight ?? false ? EmptyWidget() : _wrapTap(
             Container(
               padding: EdgeInsets.fromLTRB(10, 5, 0, 5),
               child: Text(
@@ -134,9 +138,12 @@ class _SearchBarState extends State<SearchBar> {
                       textInputAction: TextInputAction.search,
                       onSubmitted: (val){
                         //键盘确认
-                        _controller.text = "";
+                        if (widget.keyword == "") {
+                          _controller.text = "";
+                        }
                         showClear = false;
-                        widget.onSubmitted(val);
+                        var result = (val != null && val.isNotEmpty) ? val : searchState.realkeyword;
+                        widget.onSubmitted(result);
                       },
                       cursorColor: ColorDefault,
                       controller: _controller,
@@ -213,11 +220,5 @@ class _SearchBarState extends State<SearchBar> {
     if (widget.onChanged != null) {
       widget.onChanged(text);
     }
-  }
-
-  _homeFontColor() {
-    return widget.searchBarType == SearchBarType.homeLight
-        ? Colors.black54
-        : Colors.white;
   }
 }
