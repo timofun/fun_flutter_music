@@ -5,13 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fun_flutter_music/components/empty_widget.dart';
-import 'package:fun_flutter_music/components/future_builder.dart';
 import 'package:fun_flutter_music/components/load_image.dart';
 import 'package:fun_flutter_music/components/round_img.dart';
-import 'package:fun_flutter_music/model/song_comment.dart';
 import 'package:fun_flutter_music/provider/play_song_model.dart';
 import 'package:fun_flutter_music/utils/application.dart';
-import 'package:fun_flutter_music/utils/number_utils.dart';
 import 'package:fun_flutter_music/utils/text_style_utils.dart';
 import 'package:fun_flutter_music/widgets/img_menu.dart';
 import 'package:fun_flutter_music/widgets/play_bottom_menu.dart';
@@ -78,7 +75,6 @@ class _PlaySongPageState extends State<PlaySongPage>
                 height: double.infinity,
               ),
             ),
-
             AppBar(
               centerTitle: true,
               brightness: Brightness.dark,
@@ -129,7 +125,7 @@ class _PlaySongPageState extends State<PlaySongPage>
                                       alignment: Alignment.center,
                                       children: <Widget>[
                                         prefix0.Image.asset(
-                                          'images/bet.png',
+                                          'images/icon/bol.png',
                                           width: ScreenUtil().setWidth(550),
                                         ),
                                         RoundImgWidget('${curSong.picUrl}?param=200y200', 370),
@@ -149,7 +145,7 @@ class _PlaySongPageState extends State<PlaySongPage>
                                           (ScreenUtil().setWidth(45 * 2) /
                                               (ScreenUtil().setWidth(504)))),
                                   child: Image.asset(
-                                    'images/bgm.png',
+                                    'images/icon/bql.png',
                                     width: ScreenUtil().setWidth(205),
                                     height: ScreenUtil().setWidth(352.8),
                                   ),

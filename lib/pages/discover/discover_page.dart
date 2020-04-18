@@ -37,7 +37,6 @@ class _DiscoverPageState extends State<DiscoverPage> with AutomaticKeepAliveClie
     RequestManager.getInstance().get(PERSONAL, params: {'limit': 6}).then((val) {
       setState(() {
         playList = PlayListModel.fromJsonMap(val.data).result;
-        print(playList);
       });
     });
   }

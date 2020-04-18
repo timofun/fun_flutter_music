@@ -132,7 +132,7 @@ void _playSongs(PlaySongsModel model, List<Songs> data, int index) {
         prefix0.Song(
           r.id,
           name: r.name,
-          picUrl: r.artists[0].picUrl,
+          picUrl: r.artists[0].img1v1Url,
           artists: '${r.artists.map((a) => a.name).toList().join('/')}',
         )).toList(),
     index: index,

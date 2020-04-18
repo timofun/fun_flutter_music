@@ -91,7 +91,6 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     Application.screenHeight = size.height;
     Application.statusBarHeight = MediaQuery.of(context).padding.top;
     Application.bottomBarHeight = MediaQuery.of(context).padding.bottom;
-    print({"bottomBarHeight": Application.bottomBarHeight, "statusBarHeight": Application.statusBarHeight});
 
     /// 初始化本地存储库sp
     Application.initSp();

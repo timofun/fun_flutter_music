@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fun_flutter_music/model/song.dart';
-import 'package:fun_flutter_music/network/request_config.dart';
 import 'package:fun_flutter_music/utils/application.dart';
 import 'package:fun_flutter_music/utils/fluro_convert_utils.dart';
 
@@ -69,7 +66,7 @@ class PlaySongsModel extends ChangeNotifier{
 
   /// 播放
   void play() {
-    _audioPlayer.play("${baseUrl}song/media/outer/url?id=${this._songs[curIndex].id}.mp3");
+    _audioPlayer.play("https://music.163.com/song/media/outer/url?id=${this._songs[curIndex].id}.mp3");
     saveCurSong();
   }
 

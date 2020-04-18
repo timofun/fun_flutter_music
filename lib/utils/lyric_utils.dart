@@ -28,7 +28,7 @@ class LyricUtils {
         ),
       );
     }).toList();
-
+    
     for (int i = 0; i < result.length - 1; i++) {
       result[i].endTime = result[i + 1].startTime;
     }

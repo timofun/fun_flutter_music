@@ -49,7 +49,8 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
   }
 
   void _request() async {
-    _lyricData = await RequestManager.getInstance().get(LYRIC, params: {'id': curSongId});
+    var r = await RequestManager.getInstance().get(LYRIC, params: {'id': curSongId});
+    _lyricData = LyricData.fromJson(r.data);
     setState(() {
       lyrics = LyricUtils.formatLyric(_lyricData.lrc.lyric);
       _lyricWidget = LyricWidget(lyrics, 0);
@@ -58,7 +59,6 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    print('lyric_build');
     // 当前歌的id变化之后要重新获取歌词
     if (curSongId != widget.model.curSong.id) {
       lyrics = null;

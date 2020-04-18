@@ -49,7 +49,6 @@ class _SearchNormalState extends State<SearchNormalPage> {
               NavigatorUtil.pop(context);
             },
             onSubmitted: (text) {
-              print({"text": text});
               _search(context, text);
             },
           ),

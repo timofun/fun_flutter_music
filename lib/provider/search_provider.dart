@@ -19,7 +19,6 @@ class SearchProvider extends ChangeNotifier {
 
   void getSearchDefault () {
     RequestManager.getInstance().get(SEARCH_DEFAULT).then((val) {
-      print(val.data);
       _showKeyword = val.data["data"]['showKeyword'];
       _realkeyword = val.data["data"]['realkeyword'];
       _searchType = val.data["data"]['searchType'];
