@@ -9,6 +9,7 @@ import 'package:fun_flutter_music/provider/play_song_model.dart';
 import 'package:fun_flutter_music/routers/navigator_util.dart';
 import 'package:fun_flutter_music/utils/color_utils.dart';
 import 'package:fun_flutter_music/model/song.dart' as prefix0;
+import 'package:fun_flutter_music/utils/describe_utils.dart';
 import 'package:provider/provider.dart';
 
 class SearchResultContent extends StatefulWidget {
@@ -21,8 +22,8 @@ class SearchResultContent extends StatefulWidget {
   _SearchResultContentState createState() => _SearchResultContentState();
 }
 
-class _SearchResultContentState extends State<SearchResultContent> with AutomaticKeepAliveClientMixin {
-
+class _SearchResultContentState extends State<SearchResultContent>
+    with AutomaticKeepAliveClientMixin {
   int _count = -1;
   Map<String, dynamic> _params;
   List<Songs> _songsData = []; // 单曲数据
@@ -87,36 +88,71 @@ class _SearchResultContentState extends State<SearchResultContent> with Automati
     }
   }
 
+  /// 构建单曲
   Widget _getBuildSongs() {
-    return Consumer<PlaySongsModel>(
-        builder: (context, model, child) {
-          return ListView(
-            physics: BouncingScrollPhysics(),
-            children: _songsData.map((item) =>
-                GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    _playSongs(model, _songsData, 0);
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        border: Border(bottom: BorderSide(
-                            width: 1,
-                            color: ColorDefault
-                        ))
-                    ),
-                    child: Text(
-                      item.name,
-                      style: TextStyle(
-                          color: ColorDefault
-                      ),
+    return Consumer<PlaySongsModel>(builder: (context, model, child) {
+      return ListView(
+        physics: BouncingScrollPhysics(),
+        /// .asMap().keys.map拿到的是map下标
+        children: _songsData
+            .asMap().keys.map((key) => Container(
+                  padding:
+                      EdgeInsets.only(left: 20, right: 20, top: 6, bottom: 6),
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      _playSongs(model, _songsData, key);
+                    },
+                    child: Row(
+                      children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                _songsData[key].name,
+                                style: TextStyle(
+                                    fontSize: 15, color: ColorHighLight),
+                              ),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  '${_songsData[key].artists[0].name}',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: DescribeUtils.sameName(
+                                              widget.keywords,
+                                              '${_songsData[key].artists[0].name}')
+                                          ? ColorSameName
+                                          : ColorDefault),
+                                ),
+                                Text(
+                                  '/',
+                                  style: TextStyle(
+                                      fontSize: 12, color: ColorDefault),
+                                ),
+                                Text(
+                                  '${_songsData[key].album.name}',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: DescribeUtils.sameName(
+                                              widget.keywords,
+                                              '${_songsData[key].album.name}')
+                                          ? ColorSameName
+                                          : ColorDefault),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                )).toList(),
-          );
-        }
-    );
+                ))
+            .toList(),
+      );
+    });
   }
 
   @override
@@ -125,21 +161,21 @@ class _SearchResultContentState extends State<SearchResultContent> with Automati
     return _getBuildSongs();
   }
 
-void _playSongs(PlaySongsModel model, List<Songs> data, int index) {
-  print(data[0]);
-  model.playSongs(
-    data.map((r) =>
-        prefix0.Song(
-          r.id,
-          name: r.name,
-          picUrl: r.artists[0].img1v1Url,
-          artists: '${r.artists.map((a) => a.name).toList().join('/')}',
-        )).toList(),
-    index: index,
-  );
-  NavigatorUtil.goPlaySongPage(context);
-}
+  void _playSongs(PlaySongsModel model, List<Songs> data, int index) {
+    model.playSongs(
+      data
+          .map((r) => prefix0.Song(
+                r.id,
+                name: r.name,
+                picUrl: r.artists[0].img1v1Url,
+                artists: '${r.artists.map((a) => a.name).toList().join('/')}',
+              ))
+          .toList(),
+      index: index,
+    );
+    NavigatorUtil.goPlaySongPage(context);
+  }
 
-@override
-bool get wantKeepAlive => true;
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -73,7 +73,7 @@ class _SearchResultState extends State<SearchResultPage> with SingleTickerProvid
               indicatorColor: Colors.red,//选中下划线颜色,如果使用了indicator这里设置无效
               controller: _tabController,
               labelColor: Colors.red,
-              unselectedLabelColor: Colors.white,
+              unselectedLabelColor: ColorHighLight,
               tabs: _searchTabKeys.map((item)=>Tab(
                 child: Text(
                   item,

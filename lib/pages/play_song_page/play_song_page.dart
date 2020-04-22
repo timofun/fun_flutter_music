@@ -45,12 +45,14 @@ class _PlaySongPageState extends State<PlaySongPage>
         _controller.forward();
       }
     });
+    /// 初始化搜索栏数据
+    Provider.of<PlaySongsModel>(context, listen: false).getPlaySong();
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<PlaySongsModel>(builder: (context, model, child) {
-      var curSong = model.curSong;
+//      model.getPlaySong();
       if (model.curState == AudioPlayerState.PLAYING) {
         // 如果当前状态是在播放当中，则唱片一直旋转，
         // 并且唱针是移除状态
@@ -63,7 +65,7 @@ class _PlaySongPageState extends State<PlaySongPage>
       return Scaffold(
         body: Stack(
           children: <Widget>[
-            LoadImage("${curSong.picUrl}?param=200y200"),
+            LoadImage("${model.curPlaySong.picUrl}?param=200y200"),
             BackdropFilter(
               filter: ImageFilter.blur(
                 sigmaY: 100,
@@ -128,7 +130,7 @@ class _PlaySongPageState extends State<PlaySongPage>
                                           'images/icon/bol.png',
                                           width: ScreenUtil().setWidth(550),
                                         ),
-                                        RoundImgWidget('${curSong.picUrl}?param=200y200', 370),
+                                        RoundImgWidget('${model.curPlaySong.picUrl}?param=200y200', 370),
                                       ],
                                     ),
                                   ),

@@ -33,5 +33,10 @@ const String LYRIC ="lyric";
 const String COMMENT_MUSIC ="comment/music";
 
 
+///说明 : 调用此接口 , 传入音乐 id(支持多个 id, 用 , 隔开), 可获得歌曲详情(注意:歌曲封面现在需要通过专辑内容接口获取)
+//必选参数 : ids: 音乐 id, 如 ids=347230
+const String SONG_DETAIL ="song/detail";
+
+
 
 

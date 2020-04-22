@@ -172,7 +172,7 @@ class _SearchBarState extends State<SearchBar> {
                       ),
                       widget.inputBoxClick)),
               widget.searchBarType == SearchBarType.normal
-                ? (!showClear ?
+                ? (!showClear && _controller.text == '' ?
                 _wrapTap(
                   Icon(
                     Icons.mic,
