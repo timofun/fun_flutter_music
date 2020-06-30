@@ -29,6 +29,23 @@ class DragonBallNavigation extends StatelessWidget {
           return GestureDetector(
             behavior: HitTestBehavior.translucent,
             onTap: () {
+              switch (index) {
+                case 1:
+                  print(index);
+                  break;
+                case 2:
+                  print(index);
+                  break;
+                case 3:
+                  print(index);
+                  break;
+                case 4:
+                  print(index);
+                  break;
+                case 5:
+                  print(index);
+                  break;
+              }
             },
             child: DragonBall(map[keys[index]], keys[index])
           );

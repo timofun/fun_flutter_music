@@ -5,6 +5,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fun_flutter_music/pages/login/login_page.dart';
 import 'package:fun_flutter_music/pages/play_song_page/play_song_page.dart';
+import 'package:fun_flutter_music/pages/rank/rank_page.dart';
 import 'package:fun_flutter_music/widgets/home_page.dart';
 import 'package:fun_flutter_music/widgets/search_page/search_normal.dart';
 import 'package:fun_flutter_music/widgets/search_page/search_result.dart';
@@ -38,4 +39,11 @@ Handler searchResultPageHandler = Handler(
 Handler playSongPageHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return PlaySongPage();
+    });
+
+
+// 播放歌曲页
+Handler topListPageHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return RankPage();
     });

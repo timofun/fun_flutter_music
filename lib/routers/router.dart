@@ -14,6 +14,7 @@ class Routers{
   static String searchNormalPage = '/SearchNormalPage';
   static String searchResultPage = '/SearchResultPage';
   static String playSongPage = '/PlaySongPage';
+  static String topListPage = '/TopListPage';
 
 
   static void configureRoutes(Router router) {
@@ -27,5 +28,6 @@ class Routers{
     router.define(searchNormalPage, handler: searchNormalPageHandler);
     router.define(searchResultPage, handler: searchResultPageHandler);
     router.define(playSongPage, handler: playSongPageHandler);
+    router.define(topListPage, handler: topListPageHandler);
   }
 }

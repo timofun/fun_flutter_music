@@ -37,6 +37,10 @@ const String COMMENT_MUSIC ="comment/music";
 //必选参数 : ids: 音乐 id, 如 ids=347230
 const String SONG_DETAIL ="song/detail";
 
+///说明 : 调用此接口 , 传入数字 idx, 可获取不同排行榜
+//必选参数 : idx: 对象 key, 对应以下排行榜
+const String TOP_LIST ="/top/list";
+
 
 
 

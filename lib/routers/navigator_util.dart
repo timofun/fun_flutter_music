@@ -48,6 +48,11 @@ class NavigatorUtil {
     _navigateTo(context, Routers.playSongPage);
   }
 
+  // 跳转到排行榜播放页
+  static void goTopListPage(BuildContext context){
+    _navigateTo(context, Routers.topListPage);
+  }
+
   /// 返回上一页
   static void pop(context) {
     Navigator.of(context).pop();
