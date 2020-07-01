@@ -14,4 +14,9 @@ class Tracks {
 		data['second'] = second;
 		return data;
 	}
+
+	@override
+  String toString() {
+    return 'Tracks{first: $first, second: $second}';
+  }
 }

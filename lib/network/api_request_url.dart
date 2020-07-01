@@ -22,24 +22,24 @@ const String SEARCH_DEFAULT = "search/default";
 const String SEARCH = "search";
 
 ///说明 : 调用此接口 , 传入音乐 id 可获得对应音乐的歌词 ( 不需要登录 )
-//必选参数 : id: 音乐 id
+///必选参数 : id: 音乐 id
 const String LYRIC ="lyric";
 
 ///说明 : 调用此接口 , 传入音乐 id 和 limit 参数 , 可获得该音乐的所有评论 ( 不需要 登录 )
-//必选参数 : id: 音乐 id
-//可选参数 : limit: 取出评论数量 , 默认为 20
-//offset: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)*20, 其中 20 为 limit 的值
-//before: 分页参数,取上一页最后一项的 time 获取下一页数据(获取超过5000条评论的时候需要用到)
+///必选参数 : id: 音乐 id
+///可选参数 : limit: 取出评论数量 , 默认为 20
+///offset: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)*20, 其中 20 为 limit 的值
+///before: 分页参数,取上一页最后一项的 time 获取下一页数据(获取超过5000条评论的时候需要用到)
 const String COMMENT_MUSIC ="comment/music";
 
 
 ///说明 : 调用此接口 , 传入音乐 id(支持多个 id, 用 , 隔开), 可获得歌曲详情(注意:歌曲封面现在需要通过专辑内容接口获取)
-//必选参数 : ids: 音乐 id, 如 ids=347230
+///必选参数 : ids: 音乐 id, 如 ids=347230
 const String SONG_DETAIL ="song/detail";
 
 ///说明 : 调用此接口 , 传入数字 idx, 可获取不同排行榜
-//必选参数 : idx: 对象 key, 对应以下排行榜
-const String TOP_LIST ="/top/list";
+///必选参数 : idx: 对象 key, 对应以下排行榜
+const String TOP_LIST ="/toplist/detail";
 
 
 

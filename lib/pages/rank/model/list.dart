@@ -43,7 +43,13 @@ class DataList {
   String coverImgId_str;
   String ToplistType;
 
-	DataList.fromJsonMap(Map<String, dynamic> map):
+
+	@override
+  String toString() {
+    return 'DataList{subscribers: $subscribers, subscribed: $subscribed, creator: $creator, artists: $artists, tracks: $tracks, updateFrequency: $updateFrequency, backgroundCoverId: $backgroundCoverId, backgroundCoverUrl: $backgroundCoverUrl, titleImage: $titleImage, titleImageUrl: $titleImageUrl, englishTitle: $englishTitle, opRecommend: $opRecommend, recommendInfo: $recommendInfo, adType: $adType, trackNumberUpdateTime: $trackNumberUpdateTime, createTime: $createTime, highQuality: $highQuality, userId: $userId, updateTime: $updateTime, coverImgId: $coverImgId, newImported: $newImported, anonimous: $anonimous, coverImgUrl: $coverImgUrl, totalDuration: $totalDuration, specialType: $specialType, trackCount: $trackCount, commentThreadId: $commentThreadId, privacy: $privacy, trackUpdateTime: $trackUpdateTime, playCount: $playCount, subscribedCount: $subscribedCount, cloudTrackCount: $cloudTrackCount, tags: $tags, ordered: $ordered, description: $description, status: $status, name: $name, id: $id, coverImgId_str: $coverImgId_str, ToplistType: $ToplistType}';
+  }
+
+  DataList.fromJsonMap(Map<String, dynamic> map):
 		subscribers = map["subscribers"],
 		subscribed = map["subscribed"],
 		creator = map["creator"],

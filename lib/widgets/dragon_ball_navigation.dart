@@ -3,6 +3,7 @@
 /// * @time: 2020/4/9 0009
 import 'package:flutter/material.dart';
 import 'package:fun_flutter_music/components/dragon_ball.dart';
+import 'package:fun_flutter_music/routers/navigator_util.dart';
 
 class DragonBallNavigation extends StatelessWidget {
   @override
@@ -30,19 +31,20 @@ class DragonBallNavigation extends StatelessWidget {
             behavior: HitTestBehavior.translucent,
             onTap: () {
               switch (index) {
+                case 0:
+                  print(index);
+                  break;
                 case 1:
                   print(index);
                   break;
                 case 2:
+                  NavigatorUtil.goTopListPage(context);
                   print(index);
                   break;
                 case 3:
                   print(index);
                   break;
                 case 4:
-                  print(index);
-                  break;
-                case 5:
                   print(index);
                   break;
               }
